@@ -1,23 +1,22 @@
 "use client";
-import { FiChevronDown } from "react-icons/fi";
-import { FiChevronUp } from "react-icons/fi";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { LuAlignLeft, LuUser } from "react-icons/lu";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { links } from "@/utils/links";
 import SignOutLink from "./SignOutLink";
-import UserIcon from "./UserIcon";
 import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 
-function LinkDropDown() {
+
+
+function LinkDropDown({ isAdmin }: { isAdmin: boolean }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -42,6 +41,9 @@ function LinkDropDown() {
         </SignedOut>
         <SignedIn>
           {links.map((link) => {
+            if (link.label === "Dashboard" && !isAdmin) {
+              return null;
+            }
             return (
               <DropdownMenuItem key={link.href}>
                 <Link href={link.href} className="capitalize w-full">

@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Container from "@/components/globalc/Container";
 import Providers from "./providers";
 import { ClerkProvider } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -20,11 +21,13 @@ export const metadata: Metadata = {
   description: "Nifty store app",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { userId } = await auth();
+  const isAdmin = userId === process.env.ADMIN_USER_ID;
   return (
     <ClerkProvider>
       <html lang="en">
@@ -32,7 +35,7 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Providers>
-            <Navbar />
+            <Navbar isAdmin={isAdmin} />
             <Container>{children}</Container>
           </Providers>
         </body>

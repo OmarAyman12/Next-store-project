@@ -7,7 +7,8 @@ import DarkMode from "./DarkMode";
 import LinkDropDown from "./LinkDropDown";
 import { Suspense } from "react";
 import LoadingContainer from "../globalc/LoadingContainer";
-function Navbar() {
+
+function Navbar({ isAdmin }: { isAdmin: boolean }) {
   return (
     <nav className="">
       <Container className="flex flex-row px-2 py-4 border-b">
@@ -18,7 +19,7 @@ function Navbar() {
         <div className="mr-8 flex gap-x-1">
           <CartButton />
           <DarkMode />
-          <LinkDropDown />
+          <LinkDropDown isAdmin={isAdmin} />
         </div>
       </Container>
     </nav>

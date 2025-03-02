@@ -1,4 +1,4 @@
-
+import { Abel } from "next/font/google";
 
 type NavLink = {
   href: string;
@@ -12,5 +12,11 @@ export const links: NavLink[] = [
   { href: "/favorites", label: "Favorites" },
   { href: "/cart", label: "Cart" },
   { href: "/orders", label: "Orders" },
- 
+  { href: "/admin/sales", label: "Dashboard" },
+];
+
+export const adminLinks: NavLink[] = [
+  { href: "/admin/sales", label: "sales" },
+  { href: "/admin/products", label: "my products" },
+  { href: "/admin/products/create", label: "create product" },
 ];

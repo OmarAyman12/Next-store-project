@@ -6,7 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import hero1 from "@/public/images/pexels-javon-swaby-197616-2783873.jpg";
+import hero1 from "@/public/images/pexels-mateusz-dach-99805-2547541.jpg";
 import hero2 from "@/public/images/pexels-mateusz-dach-99805-2547541.jpg";
 import hero3 from "@/public/images/pexels-muffin-1616097.jpg";
 import hero4 from "@/public/images/pexels-shiny-diamond-3373739.jpg";
@@ -23,13 +23,11 @@ function HeroCarousel() {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-6 h-full">
-                   
-                      <Image
-                        src={image}
-                        alt="hero"
-                        className="object-cover h-full"
-                      />
-                  
+                    <Image
+                      src={image}
+                      alt="hero"
+                      className="object-cover h-full"
+                    />
                   </CardContent>
                 </Card>
               </div>
